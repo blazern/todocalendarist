@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_config/flutter_config.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-void main() {
+void main() async {
+  await FlutterConfig.loadEnvVariables();
   runApp(const MyApp());
 }
 

@@ -24,8 +24,8 @@ mixin _$Task {
   @JsonKey(name: 'project_id')
   int get projectId => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
-  bool get completed => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
+  bool get completed => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,8 +40,8 @@ abstract class $TaskCopyWith<$Res> {
       {int id,
       @JsonKey(name: 'project_id') int projectId,
       String content,
-      bool completed,
-      String url});
+      String url,
+      bool completed});
 }
 
 /// @nodoc
@@ -57,8 +57,8 @@ class _$TaskCopyWithImpl<$Res> implements $TaskCopyWith<$Res> {
     Object? id = freezed,
     Object? projectId = freezed,
     Object? content = freezed,
-    Object? completed = freezed,
     Object? url = freezed,
+    Object? completed = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -73,14 +73,14 @@ class _$TaskCopyWithImpl<$Res> implements $TaskCopyWith<$Res> {
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      completed: completed == freezed
-          ? _value.completed
-          : completed // ignore: cast_nullable_to_non_nullable
-              as bool,
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      completed: completed == freezed
+          ? _value.completed
+          : completed // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -94,8 +94,8 @@ abstract class _$$_TaskCopyWith<$Res> implements $TaskCopyWith<$Res> {
       {int id,
       @JsonKey(name: 'project_id') int projectId,
       String content,
-      bool completed,
-      String url});
+      String url,
+      bool completed});
 }
 
 /// @nodoc
@@ -112,8 +112,8 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res>
     Object? id = freezed,
     Object? projectId = freezed,
     Object? content = freezed,
-    Object? completed = freezed,
     Object? url = freezed,
+    Object? completed = freezed,
   }) {
     return _then(_$_Task(
       id: id == freezed
@@ -128,14 +128,14 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      completed: completed == freezed
-          ? _value.completed
-          : completed // ignore: cast_nullable_to_non_nullable
-              as bool,
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      completed: completed == freezed
+          ? _value.completed
+          : completed // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -147,8 +147,8 @@ class _$_Task implements _Task {
       {required this.id,
       @JsonKey(name: 'project_id') required this.projectId,
       required this.content,
-      required this.completed,
-      required this.url});
+      required this.url,
+      required this.completed});
 
   factory _$_Task.fromJson(Map<String, dynamic> json) => _$$_TaskFromJson(json);
 
@@ -160,13 +160,13 @@ class _$_Task implements _Task {
   @override
   final String content;
   @override
-  final bool completed;
-  @override
   final String url;
+  @override
+  final bool completed;
 
   @override
   String toString() {
-    return 'Task(id: $id, projectId: $projectId, content: $content, completed: $completed, url: $url)';
+    return 'Task(id: $id, projectId: $projectId, content: $content, url: $url, completed: $completed)';
   }
 
   @override
@@ -177,8 +177,8 @@ class _$_Task implements _Task {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.projectId, projectId) &&
             const DeepCollectionEquality().equals(other.content, content) &&
-            const DeepCollectionEquality().equals(other.completed, completed) &&
-            const DeepCollectionEquality().equals(other.url, url));
+            const DeepCollectionEquality().equals(other.url, url) &&
+            const DeepCollectionEquality().equals(other.completed, completed));
   }
 
   @JsonKey(ignore: true)
@@ -188,8 +188,8 @@ class _$_Task implements _Task {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(projectId),
       const DeepCollectionEquality().hash(content),
-      const DeepCollectionEquality().hash(completed),
-      const DeepCollectionEquality().hash(url));
+      const DeepCollectionEquality().hash(url),
+      const DeepCollectionEquality().hash(completed));
 
   @JsonKey(ignore: true)
   @override
@@ -209,8 +209,8 @@ abstract class _Task implements Task {
       {required final int id,
       @JsonKey(name: 'project_id') required final int projectId,
       required final String content,
-      required final bool completed,
-      required final String url}) = _$_Task;
+      required final String url,
+      required final bool completed}) = _$_Task;
 
   factory _Task.fromJson(Map<String, dynamic> json) = _$_Task.fromJson;
 
@@ -222,9 +222,9 @@ abstract class _Task implements Task {
   @override
   String get content;
   @override
-  bool get completed;
-  @override
   String get url;
+  @override
+  bool get completed;
   @override
   @JsonKey(ignore: true)
   _$$_TaskCopyWith<_$_Task> get copyWith => throw _privateConstructorUsedError;
