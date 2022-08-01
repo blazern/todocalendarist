@@ -7,9 +7,7 @@ import 'package:todocalendarist/model/todoist_task.dart';
 class Todoist {
   final AppConfig _appConfig;
 
-  final _dio = Dio(BaseOptions(
-    baseUrl: 'https://api.todoist.com/'
-  ));
+  final _dio = Dio(BaseOptions(baseUrl: 'https://api.todoist.com/'));
 
   Todoist(this._appConfig);
 
@@ -17,10 +15,8 @@ class Todoist {
     final accessToken = _appConfig.todoistAccessToken;
     final Response response;
     try {
-      response =
-      await _dio.get('rest/v1/tasks', options: Options(headers: {
-        'Authorization': 'Bearer $accessToken'
-      }));
+      response = await _dio.get('rest/v1/tasks',
+          options: Options(headers: {'Authorization': 'Bearer $accessToken'}));
     } on DioError catch (e) {
       if (kDebugMode) {
         print(e);

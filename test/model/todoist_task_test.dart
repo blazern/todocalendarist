@@ -44,11 +44,11 @@ void main() {
       url: 'https://todoist.com/showTask?id=6031974229',
       completed: false,
       due: TodoistTaskDueTime(
-          dateStr: '2022-07-31',
-          datetimeStr: '2022-07-31T10:30:00',
-          recurring: true,
-          lang: 'ru',
-          string: 'каждый день в 10:30',
+        dateStr: '2022-07-31',
+        datetimeStr: '2022-07-31T10:30:00',
+        recurring: true,
+        lang: 'ru',
+        string: 'каждый день в 10:30',
       ),
     );
 

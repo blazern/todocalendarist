@@ -15,6 +15,6 @@ class TodoistTaskDueTime with _$TodoistTaskDueTime {
     required String string,
   }) = _TodoistTaskDueTime;
 
-  factory TodoistTaskDueTime.fromJson(Map<String, Object?> json)
-  => _$TodoistTaskDueTimeFromJson(json);
+  factory TodoistTaskDueTime.fromJson(Map<String, Object?> json) =>
+      _$TodoistTaskDueTimeFromJson(json);
 }

@@ -17,8 +17,8 @@ class TodoistTask with _$TodoistTask {
     @JsonKey(name: 'due') TodoistTaskDueTime? due,
   }) = _TodoistTask;
 
-  factory TodoistTask.fromJson(Map<String, Object?> json)
-  => _$TodoistTaskFromJson(json);
+  factory TodoistTask.fromJson(Map<String, Object?> json) =>
+      _$TodoistTaskFromJson(json);
 }
 
 extension TodoistTaskExt on TodoistTask {

@@ -43,9 +43,10 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     _initAsync();
   }
-  
+
   void _initAsync() async {
-    final todoist = Todoist(AppConfig(todoistAccessToken: FlutterConfig.get('TODOIST_TEST_ACCESS_TOKEN')));
+    final todoist = Todoist(AppConfig(
+        todoistAccessToken: FlutterConfig.get('TODOIST_TEST_ACCESS_TOKEN')));
     final tasksRes = await todoist.getTasks();
     final tasks = tasksRes.unwrap();
     setState(() {
@@ -59,7 +60,9 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: _dataSource == null ? const CircularProgressIndicator() : SfCalendar(dataSource: _dataSource),
+      body: _dataSource == null
+          ? const CircularProgressIndicator()
+          : SfCalendar(dataSource: _dataSource),
     );
   }
 }

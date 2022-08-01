@@ -12,7 +12,8 @@ void main() {
 
   setUp(() async {
     dotenv.testLoad(fileInput: await File('.env').readAsString());
-    appConfig = AppConfig(todoistAccessToken: dotenv.get('TODOIST_TEST_ACCESS_TOKEN'));
+    appConfig =
+        AppConfig(todoistAccessToken: dotenv.get('TODOIST_TEST_ACCESS_TOKEN'));
   });
 
   test('getTasks', () async {
