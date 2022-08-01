@@ -1,10 +1,8 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:todocalendarist/base/app_config.dart';
 import 'package:todocalendarist/base/result.dart';
-import 'package:todocalendarist/model/task.dart';
+import 'package:todocalendarist/model/todoist_task.dart';
 
 class Todoist {
   final AppConfig _appConfig;
@@ -15,7 +13,7 @@ class Todoist {
 
   Todoist(this._appConfig);
 
-  Future<Result<List<Task>, String>> getTasks() async {
+  Future<Result<List<TodoistTask>, String>> getTasks() async {
     final accessToken = _appConfig.todoistAccessToken;
     final Response response;
     try {
@@ -29,9 +27,9 @@ class Todoist {
       }
       return Err(e.message);
     }
-    final tasks = <Task>[];
+    final tasks = <TodoistTask>[];
     for (final respJsonItem in response.data) {
-      tasks.add(Task.fromJson(respJsonItem));
+      tasks.add(TodoistTask.fromJson(respJsonItem));
     }
     return Ok(tasks);
   }
