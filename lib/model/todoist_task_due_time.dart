@@ -9,10 +9,10 @@ part 'todoist_task_due_time.g.dart';
 class TodoistTaskDueTime with _$TodoistTaskDueTime {
   const factory TodoistTaskDueTime({
     @JsonKey(name: 'date') required String dateStr,
-    @JsonKey(name: 'datetime') required String? datetimeStr,
+    @JsonKey(name: 'datetime') String? datetimeStr,
     required bool recurring,
-    required String? lang,
     required String string,
+    String? lang,
   }) = _TodoistTaskDueTime;
 
   factory TodoistTaskDueTime.fromJson(Map<String, Object?> json) =>

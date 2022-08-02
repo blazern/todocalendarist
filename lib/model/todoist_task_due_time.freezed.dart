@@ -25,8 +25,8 @@ mixin _$TodoistTaskDueTime {
   @JsonKey(name: 'datetime')
   String? get datetimeStr => throw _privateConstructorUsedError;
   bool get recurring => throw _privateConstructorUsedError;
-  String? get lang => throw _privateConstructorUsedError;
   String get string => throw _privateConstructorUsedError;
+  String? get lang => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,8 +43,8 @@ abstract class $TodoistTaskDueTimeCopyWith<$Res> {
       {@JsonKey(name: 'date') String dateStr,
       @JsonKey(name: 'datetime') String? datetimeStr,
       bool recurring,
-      String? lang,
-      String string});
+      String string,
+      String? lang});
 }
 
 /// @nodoc
@@ -61,8 +61,8 @@ class _$TodoistTaskDueTimeCopyWithImpl<$Res>
     Object? dateStr = freezed,
     Object? datetimeStr = freezed,
     Object? recurring = freezed,
-    Object? lang = freezed,
     Object? string = freezed,
+    Object? lang = freezed,
   }) {
     return _then(_value.copyWith(
       dateStr: dateStr == freezed
@@ -77,14 +77,14 @@ class _$TodoistTaskDueTimeCopyWithImpl<$Res>
           ? _value.recurring
           : recurring // ignore: cast_nullable_to_non_nullable
               as bool,
-      lang: lang == freezed
-          ? _value.lang
-          : lang // ignore: cast_nullable_to_non_nullable
-              as String?,
       string: string == freezed
           ? _value.string
           : string // ignore: cast_nullable_to_non_nullable
               as String,
+      lang: lang == freezed
+          ? _value.lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -100,8 +100,8 @@ abstract class _$$_TodoistTaskDueTimeCopyWith<$Res>
       {@JsonKey(name: 'date') String dateStr,
       @JsonKey(name: 'datetime') String? datetimeStr,
       bool recurring,
-      String? lang,
-      String string});
+      String string,
+      String? lang});
 }
 
 /// @nodoc
@@ -120,8 +120,8 @@ class __$$_TodoistTaskDueTimeCopyWithImpl<$Res>
     Object? dateStr = freezed,
     Object? datetimeStr = freezed,
     Object? recurring = freezed,
-    Object? lang = freezed,
     Object? string = freezed,
+    Object? lang = freezed,
   }) {
     return _then(_$_TodoistTaskDueTime(
       dateStr: dateStr == freezed
@@ -136,14 +136,14 @@ class __$$_TodoistTaskDueTimeCopyWithImpl<$Res>
           ? _value.recurring
           : recurring // ignore: cast_nullable_to_non_nullable
               as bool,
-      lang: lang == freezed
-          ? _value.lang
-          : lang // ignore: cast_nullable_to_non_nullable
-              as String?,
       string: string == freezed
           ? _value.string
           : string // ignore: cast_nullable_to_non_nullable
               as String,
+      lang: lang == freezed
+          ? _value.lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -153,10 +153,10 @@ class __$$_TodoistTaskDueTimeCopyWithImpl<$Res>
 class _$_TodoistTaskDueTime implements _TodoistTaskDueTime {
   const _$_TodoistTaskDueTime(
       {@JsonKey(name: 'date') required this.dateStr,
-      @JsonKey(name: 'datetime') required this.datetimeStr,
+      @JsonKey(name: 'datetime') this.datetimeStr,
       required this.recurring,
-      required this.lang,
-      required this.string});
+      required this.string,
+      this.lang});
 
   factory _$_TodoistTaskDueTime.fromJson(Map<String, dynamic> json) =>
       _$$_TodoistTaskDueTimeFromJson(json);
@@ -170,13 +170,13 @@ class _$_TodoistTaskDueTime implements _TodoistTaskDueTime {
   @override
   final bool recurring;
   @override
-  final String? lang;
-  @override
   final String string;
+  @override
+  final String? lang;
 
   @override
   String toString() {
-    return 'TodoistTaskDueTime(dateStr: $dateStr, datetimeStr: $datetimeStr, recurring: $recurring, lang: $lang, string: $string)';
+    return 'TodoistTaskDueTime(dateStr: $dateStr, datetimeStr: $datetimeStr, recurring: $recurring, string: $string, lang: $lang)';
   }
 
   @override
@@ -188,8 +188,8 @@ class _$_TodoistTaskDueTime implements _TodoistTaskDueTime {
             const DeepCollectionEquality()
                 .equals(other.datetimeStr, datetimeStr) &&
             const DeepCollectionEquality().equals(other.recurring, recurring) &&
-            const DeepCollectionEquality().equals(other.lang, lang) &&
-            const DeepCollectionEquality().equals(other.string, string));
+            const DeepCollectionEquality().equals(other.string, string) &&
+            const DeepCollectionEquality().equals(other.lang, lang));
   }
 
   @JsonKey(ignore: true)
@@ -199,8 +199,8 @@ class _$_TodoistTaskDueTime implements _TodoistTaskDueTime {
       const DeepCollectionEquality().hash(dateStr),
       const DeepCollectionEquality().hash(datetimeStr),
       const DeepCollectionEquality().hash(recurring),
-      const DeepCollectionEquality().hash(lang),
-      const DeepCollectionEquality().hash(string));
+      const DeepCollectionEquality().hash(string),
+      const DeepCollectionEquality().hash(lang));
 
   @JsonKey(ignore: true)
   @override
@@ -219,10 +219,10 @@ class _$_TodoistTaskDueTime implements _TodoistTaskDueTime {
 abstract class _TodoistTaskDueTime implements TodoistTaskDueTime {
   const factory _TodoistTaskDueTime(
       {@JsonKey(name: 'date') required final String dateStr,
-      @JsonKey(name: 'datetime') required final String? datetimeStr,
+      @JsonKey(name: 'datetime') final String? datetimeStr,
       required final bool recurring,
-      required final String? lang,
-      required final String string}) = _$_TodoistTaskDueTime;
+      required final String string,
+      final String? lang}) = _$_TodoistTaskDueTime;
 
   factory _TodoistTaskDueTime.fromJson(Map<String, dynamic> json) =
       _$_TodoistTaskDueTime.fromJson;
@@ -236,9 +236,9 @@ abstract class _TodoistTaskDueTime implements TodoistTaskDueTime {
   @override
   bool get recurring;
   @override
-  String? get lang;
-  @override
   String get string;
+  @override
+  String? get lang;
   @override
   @JsonKey(ignore: true)
   _$$_TodoistTaskDueTimeCopyWith<_$_TodoistTaskDueTime> get copyWith =>

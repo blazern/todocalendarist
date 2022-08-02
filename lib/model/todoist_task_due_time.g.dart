@@ -12,8 +12,8 @@ _$_TodoistTaskDueTime _$$_TodoistTaskDueTimeFromJson(
       dateStr: json['date'] as String,
       datetimeStr: json['datetime'] as String?,
       recurring: json['recurring'] as bool,
-      lang: json['lang'] as String?,
       string: json['string'] as String,
+      lang: json['lang'] as String?,
     );
 
 Map<String, dynamic> _$$_TodoistTaskDueTimeToJson(
@@ -22,6 +22,6 @@ Map<String, dynamic> _$$_TodoistTaskDueTimeToJson(
       'date': instance.dateStr,
       'datetime': instance.datetimeStr,
       'recurring': instance.recurring,
-      'lang': instance.lang,
       'string': instance.string,
+      'lang': instance.lang,
     };

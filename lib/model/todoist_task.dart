@@ -26,7 +26,7 @@ extension TodoistTaskExt on TodoistTask {
     if (due == null) {
       return null;
     }
-    return DateTime.parse(due!.dateStr);
+    return DateTime.parse(due!.dateStr).toLocal();
   }
 
   DateTime? get datetime {
@@ -37,6 +37,6 @@ extension TodoistTaskExt on TodoistTask {
     if (datetimeStr == null) {
       return null;
     }
-    return DateTime.parse(datetimeStr);
+    return DateTime.parse(datetimeStr).toLocal();
   }
 }
