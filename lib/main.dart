@@ -71,18 +71,18 @@ class MyCalendarDataSource extends CalendarDataSource<TodoistTask> {
   final List<TodoistTask> _tasks;
 
   MyCalendarDataSource(List<TodoistTask> tasks)
-      : _tasks = tasks.where((task) => task.datetime != null).toList() {
+      : _tasks = tasks.where((task) => task.nextDatetime != null).toList() {
     appointments = _tasks;
   }
 
   @override
   DateTime getStartTime(int index) {
-    return _tasks[index].datetime!;
+    return _tasks[index].nextDatetime!;
   }
 
   @override
   DateTime getEndTime(int index) {
-    return _tasks[index].datetime!.add(const Duration(minutes: 30));
+    return _tasks[index].nextDatetime!.add(const Duration(minutes: 30));
   }
 
   @override

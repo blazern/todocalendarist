@@ -18,3 +18,16 @@ class TodoistTaskDueTime with _$TodoistTaskDueTime {
   factory TodoistTaskDueTime.fromJson(Map<String, Object?> json) =>
       _$TodoistTaskDueTimeFromJson(json);
 }
+
+extension TodoistTaskExt on TodoistTaskDueTime {
+  DateTime? get nextDate {
+    return DateTime.parse(dateStr).toLocal();
+  }
+
+  DateTime? get nextDatetime {
+    if (datetimeStr == null) {
+      return null;
+    }
+    return DateTime.parse(datetimeStr!).toLocal();
+  }
+}

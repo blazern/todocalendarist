@@ -22,21 +22,6 @@ class TodoistTask with _$TodoistTask {
 }
 
 extension TodoistTaskExt on TodoistTask {
-  DateTime? get date {
-    if (due == null) {
-      return null;
-    }
-    return DateTime.parse(due!.dateStr).toLocal();
-  }
-
-  DateTime? get datetime {
-    if (due == null) {
-      return null;
-    }
-    final datetimeStr = due!.datetimeStr;
-    if (datetimeStr == null) {
-      return null;
-    }
-    return DateTime.parse(datetimeStr).toLocal();
-  }
+  DateTime? get nextDate => due?.nextDate;
+  DateTime? get nextDatetime => due?.nextDatetime;
 }
