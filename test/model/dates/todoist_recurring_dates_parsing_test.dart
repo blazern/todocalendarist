@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:todocalendarist/model/dates/recurring_dates_parsing.dart';
+import 'package:todocalendarist/model/dates/todoist_recurring_dates_parsing.dart';
 
 void main() {
   void everydayTest(String everydayString) {
@@ -139,5 +139,81 @@ void main() {
     everyWeekTest('every week', DateTime(2002, 01, 01));
     everyWeekTest('every week', DateTime(2002, 01, 04));
     everyWeekTest('every week at 10', DateTime(2002, 01, 06));
+  });
+
+  void everyMonthTest(String str, {
+      required DateTime now,
+      required DateTime nextDateTime,
+      List<DateTime>? expectedNext2,
+      List<DateTime>? expectedNext3}) {
+    final otherDates = parseRecurringTimeString(str,
+        nextDateTime: nextDateTime,
+        now: now,
+        defaultDuration: const Duration(days: 200),
+    ).unwrap();
+    if (expectedNext2 != null) {
+      final otherFirst2 = otherDates.sublist(0, 2);
+      expect(otherFirst2, equals(expectedNext2));
+    }
+    if (expectedNext3 != null) {
+      final otherFirst3 = otherDates.sublist(0, 3);
+      expect(otherFirst3, equals(expectedNext3));
+    }
+  }
+
+  test('every month', () {
+    everyMonthTest('every 27th of the month',
+        now: DateTime(2022, 08, 07),
+        nextDateTime: DateTime(2022, 08, 27),
+        expectedNext2: [DateTime(2022, 09, 27), DateTime(2022, 10, 27)],
+    );
+    everyMonthTest('every 27',
+        now: DateTime(2022, 08, 07),
+        nextDateTime: DateTime(2022, 08, 27),
+        expectedNext2: [DateTime(2022, 09, 27), DateTime(2022, 10, 27)],
+    );
+    everyMonthTest('every month on 3',
+        now: DateTime(2022, 08, 07),
+        nextDateTime: DateTime(2022, 09, 03),
+        expectedNext2: [DateTime(2022, 10, 03), DateTime(2022, 11, 03)],
+    );
+    everyMonthTest('every month on 3 at 2pm',
+        now: DateTime(2022, 08, 07),
+        nextDateTime: DateTime(2022, 09, 03),
+        expectedNext2: [DateTime(2022, 10, 03), DateTime(2022, 11, 03)],
+    );
+    everyMonthTest('every month on 4th',
+        now: DateTime(2022, 08, 07),
+        nextDateTime: DateTime(2022, 09, 04),
+        expectedNext2: [DateTime(2022, 10, 04), DateTime(2022, 11, 04)],
+    );
+    everyMonthTest('every month on 4th at 10:00',
+        now: DateTime(2022, 08, 07),
+        nextDateTime: DateTime(2022, 09, 04),
+        expectedNext2: [DateTime(2022, 10, 04), DateTime(2022, 11, 04)],
+    );
+    everyMonthTest('monthly on 3',
+        now: DateTime(2022, 08, 07),
+        nextDateTime: DateTime(2022, 09, 03),
+        expectedNext2: [DateTime(2022, 10, 03), DateTime(2022, 11, 03)],
+    );
+    everyMonthTest('monthly on 3 at 2pm',
+        now: DateTime(2022, 08, 07),
+        nextDateTime: DateTime(2022, 09, 03),
+        expectedNext2: [DateTime(2022, 10, 03), DateTime(2022, 11, 03)],
+    );
+  });
+
+  test('every month when the specified date of month does not occur in each month', () {
+    everyMonthTest('monthly on 30',
+      now: DateTime(2023, 01, 02),
+      nextDateTime: DateTime(2023, 01, 30),
+      expectedNext3: [DateTime(2023, 02, 28), DateTime(2023, 03, 02), DateTime(2023, 03, 30)],
+    );
+    everyMonthTest('monthly on 31',
+      now: DateTime(2022, 08, 25),
+      nextDateTime: DateTime(2022, 08, 31),
+      expectedNext3: [DateTime(2022, 09, 30), DateTime(2022, 10, 01), DateTime(2022, 10, 31)],
+    );
   });
 }
