@@ -20,7 +20,7 @@ class TodoistTaskDueTime with _$TodoistTaskDueTime {
 }
 
 extension TodoistTaskExt on TodoistTaskDueTime {
-  DateTime? get nextDate {
+  DateTime get nextDate {
     return DateTime.parse(dateStr).toLocal();
   }
 

@@ -16,14 +16,16 @@ class TodoistKeywordsSplit with _$TodoistKeywordsSplit {
     final pieces = _extractPieces(dateStr);
     final timePieceIndex = _findTimePieceIndex(pieces);
     final time = _extractTimeFrom(pieces, timePieceIndex);
-    final dayOfMonth = _extractDayOfMonth(pieces, timePieceIndex: timePieceIndex);
-    return TodoistKeywordsSplit(pieces: pieces, time: time, dayOfMonth: dayOfMonth);
+    final dayOfMonth =
+        _extractDayOfMonth(pieces, timePieceIndex: timePieceIndex);
+    return TodoistKeywordsSplit(
+        pieces: pieces, time: time, dayOfMonth: dayOfMonth);
   }
 
   static List<String> _extractPieces(String dateStr) {
     dateStr = dateStr.trim().toLowerCase();
     final pieces = <String>[];
-    
+
     // Sorted ascending - the longest first.
     // This is because often long keywords have short keywords in them,
     // for example, the 'day' keyword is a part of the 'work day' keyword.
@@ -35,8 +37,9 @@ class TodoistKeywordsSplit with _$TodoistKeywordsSplit {
       for (final keyword in allKeywords) keyword: RegExp('^$keyword( |\$)')
     };
     final endOfSectionRegex = RegExp(' |\$');
-    
-    outer: while (dateStr.isNotEmpty) {
+
+    outer:
+    while (dateStr.isNotEmpty) {
       for (final keyword in allKeywordsSorted) {
         final regex = keywordsRegexes[keyword]!;
         if (regex.hasMatch(dateStr)) {

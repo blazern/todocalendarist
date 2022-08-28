@@ -1,0 +1,4 @@
+enum GeneralError {
+  network,
+  other,
+}

@@ -1,4 +1,3 @@
-
 const every = 'every';
 
 const daysOfWeek = {
@@ -58,7 +57,7 @@ final allWeeklyMarkers = {
   ...weekMarkers,
 };
 
-const monthMarkers = { 'month', 'monthly', 'every' };
+const monthMarkers = {'month', 'monthly', 'every'};
 
 const pm = 'pm';
 const am = 'am';

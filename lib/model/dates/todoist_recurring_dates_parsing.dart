@@ -7,13 +7,13 @@ enum RecurringDatesParsingError {
   notSupported,
 }
 
-const defaultDuration = Duration(days: 60);
+const todoistRecurringDatesDefaultDuration = Duration(days: 60);
 
 Result<List<DateTime>, RecurringDatesParsingError> parseRecurringTimeString(
     String str,
     {required DateTime nextDateTime,
     required DateTime now,
-    Duration defaultDuration = defaultDuration}) {
+    Duration defaultDuration = todoistRecurringDatesDefaultDuration}) {
   /// NOTE: every recurring string can have an 'at HOUR' part (e.g. 'at 4pm'),
   /// but we do not handle it, because we already have [nextDateTime] at hand -
   /// whatever value the 'at HOUR' part has, the specified [HOUR] is already a
@@ -104,14 +104,17 @@ extension on DateTime {
       millisecondsSinceEpoch < other.millisecondsSinceEpoch;
 
   DateTime firstDayOfMonth() {
-    return DateTime(year, month, 1, hour, minute, second, millisecond, microsecond);
+    return DateTime(
+        year, month, 1, hour, minute, second, millisecond, microsecond);
   }
 
   DateTime lastDayOfMonth() {
-    return DateTime(year, month + 1, 0, hour, minute, second, millisecond, microsecond);
+    return DateTime(
+        year, month + 1, 0, hour, minute, second, millisecond, microsecond);
   }
 
   DateTime addMonths(int value) {
-    return DateTime(year, month + value, day, hour, minute, second, millisecond, microsecond);
+    return DateTime(year, month + value, day, hour, minute, second, millisecond,
+        microsecond);
   }
 }

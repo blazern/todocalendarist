@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_config/flutter_config.dart';
+import 'package:get_it/get_it.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:todocalendarist/base/app_config.dart';
+import 'package:todocalendarist/model/task.dart';
 import 'package:todocalendarist/model/todoist_task.dart';
-import 'package:todocalendarist/todoist/todoist.dart';
+import 'package:todocalendarist/utils/service_locator.dart';
+import 'package:todocalendarist/tasks/tasks_manager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await FlutterConfig.loadEnvVariables();
+  registerLocatedServices();
   runApp(const MyApp());
 }
 
@@ -36,6 +39,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final _tasksManager = GetIt.I.get<TasksManager>();
   MyCalendarDataSource? _dataSource;
 
   @override
@@ -45,10 +49,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _initAsync() async {
-    final todoist = Todoist(AppConfig(
-        todoistAccessToken: FlutterConfig.get('TODOIST_TEST_ACCESS_TOKEN')));
-    final tasksRes = await todoist.getTasks();
-    final tasks = tasksRes.unwrap();
+    final tasksRes = await _tasksManager.fetchTasks();
+    final tasks = tasksRes.unwrap().tasks;
     setState(() {
       _dataSource = MyCalendarDataSource(tasks);
     });
@@ -68,9 +70,9 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class MyCalendarDataSource extends CalendarDataSource<TodoistTask> {
-  final List<TodoistTask> _tasks;
+  final List<Task> _tasks;
 
-  MyCalendarDataSource(List<TodoistTask> tasks)
+  MyCalendarDataSource(List<Task> tasks)
       : _tasks = tasks.where((task) => task.nextDatetime != null).toList() {
     appointments = _tasks;
   }
